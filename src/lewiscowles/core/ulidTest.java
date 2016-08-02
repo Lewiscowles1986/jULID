@@ -9,7 +9,7 @@ import org.junit.Test;
 public class ulidTest {
 
     protected ulid mUlid;
-    protected long TIME = 1469918176385l;
+    protected final long TIME = 1469918176385l;
 
     @Before
     public void setUp() {
