@@ -45,7 +45,7 @@ public final class Ulid {
     protected double getRand()
     {
         try {
-            SecureRandom randGen = java.security.SecureRandom.getInstanceStrong();
+            SecureRandom randGen = new SecureRandom();
             return randGen.nextDouble();
         } catch(Exception e) {
             e.getMessage();
