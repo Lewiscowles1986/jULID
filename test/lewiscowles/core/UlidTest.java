@@ -6,14 +6,14 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ulidTest {
+public class UlidTest {
 
-    protected ulid mUlid;
+    protected Ulid mUlid;
     protected final long TIME = 1469918176385l;
 
     @Before
     public void setUp() {
-        mUlid = new ulid();
+        mUlid = new Ulid();
     }
 
     @Test

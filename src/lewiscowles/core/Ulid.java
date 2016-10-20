@@ -1,11 +1,12 @@
 package lewiscowles.core;
 
+import java.security.SecureRandom;
 
 import static java.lang.Math.floor;
 import static java.lang.Math.random;
 
 
-public final class ulid {
+public final class Ulid {
     public final String[] ENCODING = {  "0","1","2","3","4","5","6","7","8","9",
                                         "A","B","C","D","E","F","G","H","J","K",
                                         "M","N","P","Q","R","S","T","V","W","X",
@@ -43,6 +44,12 @@ public final class ulid {
 
     protected double getRand()
     {
+        try {
+            SecureRandom randGen = java.security.SecureRandom.getInstanceStrong();
+            return randGen.nextDouble();
+        } catch(Exception e) {
+            e.getMessage();
+        }
         return random();
     }
 
