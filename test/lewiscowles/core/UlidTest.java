@@ -9,11 +9,15 @@ import org.junit.Test;
 public class UlidTest {
 
     protected Ulid mUlid;
+    protected RandomGeneratorInterface mRG;
+    protected TimeSourceInterface mTS;
     protected final long TIME = 1469918176385l;
 
     @Before
     public void setUp() {
-        mUlid = new Ulid();
+        mTS = new SystemTimeSource();
+        mRG = new SecureRandomGenerator();
+        mUlid = new Ulid(mTS, mRG);
     }
 
     @Test
@@ -24,7 +28,7 @@ public class UlidTest {
 
     @Test
     public void getRandIsBetween1and0() {
-        double rand = mUlid.getRand();
+        double rand = mRG.generate();
         assertTrue( rand > 0 && rand < 1 );
     }
 
