@@ -1,9 +1,7 @@
 package lewiscowles.core;
 
-import java.security.SecureRandom;
 
 import static java.lang.Math.floor;
-import static java.lang.Math.random;
 
 
 public final class Ulid {
@@ -13,9 +11,17 @@ public final class Ulid {
                                         "Y","Z"};
     public final long ENCODING_LENGTH = 32;
 
+    protected final TimeSourceInterface time_source;
+    protected final RandomGeneratorInterface rand_gen;
+
+    public Ulid(TimeSourceInterface ts, RandomGeneratorInterface rg) {
+        time_source = ts;
+        rand_gen = rg;
+    }
+
     public String get()
     {
-        return encodeTime( getTime(), 10) + encodeRandom(16);
+        return encodeTime( time_source.getTime(), 10) + encodeRandom(16);
     }
 
     protected String encodeTime(long time, long length)
@@ -35,26 +41,11 @@ public final class Ulid {
     {
         String out = "";
         while(length > 0) {
-            int rand = (int)(floor(ENCODING_LENGTH * getRand()));
+            int rand = (int)(floor(ENCODING_LENGTH * rand_gen.generate()));
             out = ENCODING[rand] + out;
             length--;
         }
         return out;
     }
 
-    protected double getRand()
-    {
-        try {
-            SecureRandom randGen = new SecureRandom();
-            return randGen.nextDouble();
-        } catch(Exception e) {
-            e.getMessage();
-        }
-        return random();
-    }
-
-    protected long getTime()
-    {
-        return System.currentTimeMillis();
-    }
 }
