@@ -2,6 +2,10 @@ package lewiscowles.core;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertThat;
+
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.lessThan;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,9 +31,13 @@ public class UlidTest {
     }
 
     @Test
-    public void getRandIsBetween1and0() {
-        double rand = mRG.generate();
-        assertTrue( rand > 0 && rand < 1 );
+    public void getRandIsGreaterThanZero() {
+        assertThat( mRG.generate(), greaterThan(0.0) );
+    }
+
+    @Test
+    public void getRandIsLessThanOne() {
+      assertThat( mRG.generate(), lessThan(1.0) );
     }
 
     @Test
