@@ -70,4 +70,32 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <profiles>
+        <profile>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>bintray-lewiscowles1986-jULID</id>
+                    <name>bintray</name>
+                    <url>https://dl.bintray.com/lewiscowles1986/jULID</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>bintray-lewiscowles1986-jULID</id>
+                    <name>bintray-plugins</name>
+                    <url>https://dl.bintray.com/lewiscowles1986/jULID</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <id>bintray</id>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>bintray</activeProfile>
+    </activeProfiles>
 </project>
