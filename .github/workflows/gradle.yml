@@ -20,5 +20,16 @@ jobs:
     - name: Build with Gradle
       run: |
         chmod +x ./gradlew
-        ./gradlew build
+        ./gradlew clean jar
+    - uses: actions/upload-artifact@master
+      with:
+        name: build
+        path: build/libs
+    - name: Run tests and produce report with Gradle
+      run: |
+        chmod +x ./gradlew
         ./gradlew check
+    - uses: actions/upload-artifact@master
+      with:
+        name: build reports
+        path: build/reports
