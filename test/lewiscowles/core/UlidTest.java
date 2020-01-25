@@ -1,7 +1,6 @@
 package lewiscowles.core;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertThat;
 
 import static org.hamcrest.Matchers.greaterThan;
@@ -37,7 +36,7 @@ public class UlidTest {
 
     @Test
     public void getRandIsLessThanOne() {
-      assertThat( mRG.generate(), lessThan(1.0) );
+        assertThat( mRG.generate(), lessThan(1.0) );
     }
 
     @Test
