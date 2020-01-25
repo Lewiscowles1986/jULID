@@ -1,4 +1,4 @@
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 apply plugin: 'java'
 apply plugin: "jacoco"
@@ -6,6 +6,7 @@ apply plugin: "jacoco"
 version = '1.0-SNAPSHOT'
 group 'lewiscowles.core.Ulid'
 
+sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
@@ -35,7 +36,7 @@ jacocoTestReport {
     reports {
         xml.enabled false
         csv.enabled false
-        html.destination "${buildDir}/reports/jacoco"
+        html.destination file("${buildDir}/reports/jacoco")
     }
 }
 
