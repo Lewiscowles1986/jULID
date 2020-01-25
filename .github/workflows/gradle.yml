@@ -1,6 +1,7 @@
 name: Java CI
 
 on:
+  pull_request:
   push:
   schedule:
     - cron: 0 6 * * *
@@ -19,7 +20,6 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: |
-        chmod +x ./gradlew
         ./gradlew clean jar
     - uses: actions/upload-artifact@master
       with:
@@ -27,7 +27,6 @@ jobs:
         path: build/libs
     - name: Run tests and produce report with Gradle
       run: |
-        chmod +x ./gradlew
         ./gradlew check
     - uses: actions/upload-artifact@master
       with:
