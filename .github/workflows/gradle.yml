@@ -3,6 +3,8 @@ name: Java CI
 on:
   pull_request:
   push:
+    branches:    
+      - master
   schedule:
     - cron: 0 6 * * *
 
