@@ -3,10 +3,12 @@ package lewiscowles.core;
 
 public final class MonotonicTimeSource implements TimeSourceInterface {
     public long getTime() {
-        /*
-         * Note that this time-source returns a value very different,
-         * but should be non-colliding with SystemTimeSource
-         */
-        return System.nanoTime();
+        return getTimeInternal();
+    }
+
+    private static long lastTime;
+    private synchronized static long getTimeInternal() {
+        long now = System.nanoTime();
+        return (now > lastTime) ? lastTime=now : ++lastTime;
     }
 }
