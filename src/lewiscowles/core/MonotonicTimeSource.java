@@ -8,7 +8,7 @@ public final class MonotonicTimeSource implements TimeSourceInterface {
 
     private static long lastTime;
     private synchronized static long getTimeInternal() {
-        long now = System.nanoTime();
+        long now = System.currentTimeMillis();
         return (now > lastTime) ? lastTime=now : ++lastTime;
     }
 }
