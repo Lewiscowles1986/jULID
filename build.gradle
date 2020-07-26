@@ -3,6 +3,18 @@ apply plugin: 'maven-publish'
 apply plugin: 'java'
 apply plugin: "jacoco"
 
+buildscript {
+    repositories {
+        mavenCentral()
+        //Needed only for SNAPSHOT versions
+        //maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    }
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.5.1'
+    }
+}
+apply plugin: 'info.solidsoft.pitest'
+
 version = '1.0-SNAPSHOT'
 group 'lewiscowles.core.Ulid'
 
@@ -41,3 +53,9 @@ jacocoTestReport {
 }
 
 check.dependsOn jacocoTestReport
+
+pitest {
+    targetClasses = ['lewiscowles.core.*']
+    testSourceSets = [sourceSets.test]
+    mainSourceSets= [sourceSets.main]
+}
