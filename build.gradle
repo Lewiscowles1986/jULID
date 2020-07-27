@@ -65,11 +65,3 @@ pitest {
     mainSourceSets= [sourceSets.main]
     junit5PluginVersion = '0.12'
 }
-
-allprojects {
-    gradle.projectsEvaluated {
-        tasks.withType(JavaCompile) {
-            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-        }
-    }
-}
