@@ -23,14 +23,14 @@ jobs:
     - name: Build with Gradle
       run: |
         ./gradlew clean jar
-    - uses: actions/upload-artifact@master
+    - uses: actions/upload-artifact@main
       with:
         name: build
         path: build/libs
     - name: Run tests and produce report with Gradle
       run: |
         ./gradlew --stacktrace clean check
-    - uses: actions/upload-artifact@master
+    - uses: actions/upload-artifact@main
       with:
         name: build reports
         path: build/reports
@@ -48,7 +48,7 @@ jobs:
     - name: Pittest
       run: |
         ./gradlew pitest
-    - uses: actions/upload-artifact@master
+    - uses: actions/upload-artifact@main
       with:
         name: pittest
         path: build/reports/pitest
