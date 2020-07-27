@@ -59,3 +59,11 @@ pitest {
     testSourceSets = [sourceSets.test]
     mainSourceSets= [sourceSets.main]
 }
+
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+}
