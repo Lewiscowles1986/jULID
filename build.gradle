@@ -64,4 +64,6 @@ pitest {
     testSourceSets = [sourceSets.test]
     mainSourceSets= [sourceSets.main]
     junit5PluginVersion = '0.12'
+    timestampedReports = false
+    outputFormats = ['HTML']
 }
