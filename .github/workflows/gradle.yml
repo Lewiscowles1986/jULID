@@ -51,4 +51,4 @@ jobs:
     - uses: actions/upload-artifact@master
       with:
         name: pittest
-        path: build
+        path: build/reports/pitest
